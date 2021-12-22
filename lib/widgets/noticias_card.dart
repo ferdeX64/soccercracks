@@ -9,7 +9,6 @@ class NoticeCard extends StatelessWidget {
     final url=model.imagen!.first;
 
     return Card(
-      
         child:ListTile(
           leading:  Image.network(url,width: 64),
           title: Text(model.titulo??""),
