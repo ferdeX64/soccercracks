@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:soccer_cracks/models/noticia_model.dart';
 import 'package:soccer_cracks/services/notices_services.dart';
-import 'package:soccer_cracks/utils/noticias_card.dart';
+import 'noticias_card.dart';
 
 class NoticiasWidget extends StatefulWidget {
   const NoticiasWidget({Key? key}) : super(key: key);
@@ -36,9 +36,12 @@ class _NoticiasWidgetState extends State<NoticiasWidget> {
     }
 
     return Container(
+      
+     
       padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 7.0),
       child: ListView(
-        children: _listaNotice!.map((e) => NoticeCard(model: e)).toList(),
+        
+        children: _listaNotice!.map((e) => NewNoticeCard(model: e)).toList(),
       ),
     );
   }

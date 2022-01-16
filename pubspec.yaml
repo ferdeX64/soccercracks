@@ -38,6 +38,7 @@ dependencies:
   flutter_screenutil: ^5.0.1
   shared_preferences: ^2.0.11
   provider: ^6.0.1
+  simple_gradient_text: ^1.2.2
   
   
 dev_dependencies:
