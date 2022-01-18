@@ -31,85 +31,88 @@ class _PerfilWidgetState extends State<PerfilWidget> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    return SingleChildScrollView(
-        child: Column(
-      children: [
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 14.0),
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          width: size.width * .80,
-          decoration: BoxDecoration(
-              image: const DecorationImage(
-                  image: AssetImage("assets/images/fondo_futbol.jpg"),
-                  fit: BoxFit.cover),
-              color: Theme.of(context).scaffoldBackgroundColor,
-              borderRadius: BorderRadius.circular(10.0),
-              border: Border.all(
-                  width: 2.0, color: Theme.of(context).primaryColorDark)),
-          child: Form(
-              key: _formKey,
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 14.0, horizontal: 7.0),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 7.0),
-                      child: Text("Nueva foto de perfil",
-                          style: Theme.of(context).textTheme.subtitle1),
-                    ),
-                    SizedBox(
-                      height: 100.h,
-                      width: 150.h,
-                      child: Padding(
-                        padding: const EdgeInsets.all(7.0),
-                        child: _imagen == null
-                            ? Image.asset('assets/images/generica.jpg')
-                            : Image.file(_imagen!),
+    return Center(
+      child: SingleChildScrollView(
+        
+          child: Column(
+        children: [
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 00.0),
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            width: size.width * .80,
+            decoration: BoxDecoration(
+                image: const DecorationImage(
+                    image: AssetImage("assets/images/fondo_futbol.jpg"),
+                    fit: BoxFit.cover),
+                color: Theme.of(context).scaffoldBackgroundColor,
+                borderRadius: BorderRadius.circular(10.0),
+                border: Border.all(
+                    width: 2.0, color: Theme.of(context).primaryColorDark)),
+            child: Form(
+                key: _formKey,
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 14.0, horizontal: 7.0),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 7.0),
+                        child: Text("Nueva foto de perfil",
+                            style: Theme.of(context).textTheme.subtitle1),
                       ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        ElevatedButton.icon(
-                            onPressed: () => _selectImage(ImageSource.camera),
-                            icon: const Icon(Icons.camera),
-                            label: const Text("Cámara")),
-                        ElevatedButton.icon(
-                            onPressed: () => _selectImage(ImageSource.gallery),
-                            icon: const Icon(Icons.image),
-                            label: const Text("Galería")),
-                      ],
-                    ),
-                    _onSaving
-                        ? const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 20.0),
-                            child: CircularProgressIndicator())
-                        : Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 20.0),
-                            child: Tooltip(
-                              message: "Guardar nueva foto de perfil",
-                              child: ElevatedButton.icon(
-                                  onPressed: () {
-                                    _sendForm();
-                                  },
-                                  label: const Text("Guardar"),
-                                  icon: const Icon(Icons.save)),
+                      SizedBox(
+                        height: 100.h,
+                        width: 150.h,
+                        child: Padding(
+                          padding: const EdgeInsets.all(7.0),
+                          child: _imagen == null
+                              ? Image.asset('assets/images/generica.jpg')
+                              : Image.file(_imagen!),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ElevatedButton.icon(
+                              onPressed: () => _selectImage(ImageSource.camera),
+                              icon: const Icon(Icons.camera),
+                              label: const Text("Cámara")),
+                          ElevatedButton.icon(
+                              onPressed: () => _selectImage(ImageSource.gallery),
+                              icon: const Icon(Icons.image),
+                              label: const Text("Galería")),
+                        ],
+                      ),
+                      _onSaving
+                          ? const Padding(
+                              padding: EdgeInsets.symmetric(vertical: 20.0),
+                              child: CircularProgressIndicator())
+                          : Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 20.0),
+                              child: Tooltip(
+                                message: "Guardar nueva foto de perfil",
+                                child: ElevatedButton.icon(
+                                    onPressed: () {
+                                      _sendForm();
+                                    },
+                                    label: const Text("Guardar"),
+                                    icon: const Icon(Icons.save)),
+                              ),
                             ),
-                          ),
-                    const Padding(
-                        padding: EdgeInsets.only(top: 7.0),
-                        child: Text("Erick Fernández",
-                            style: TextStyle(
-                                fontSize: 20.0,
-                                color: Colors.blue,
-                                fontWeight: FontWeight.bold))),
-                  ],
-                ),
-              )),
-        )
-      ],
-    ));
+                      const Padding(
+                          padding: EdgeInsets.only(top: 7.0),
+                          child: Text("Erick Fernández",
+                              style: TextStyle(
+                                  fontSize: 20.0,
+                                  color: Colors.blue,
+                                  fontWeight: FontWeight.bold))),
+                    ],
+                  ),
+                )),
+          )
+        ],
+      )),
+    );
   }
 
   Future _selectImage(ImageSource source) async {
