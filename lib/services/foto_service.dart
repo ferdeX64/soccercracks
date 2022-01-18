@@ -2,11 +2,11 @@ import 'dart:io';
 
 import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:http/http.dart' as http;
-import 'package:soccer_cracks/models/foto_model.dart';
 import 'dart:convert';
+import 'package:soccer_cracks/models/foto_model.dart';
 
-class FotosService {
-  FotosService();
+class FotoService {
+  FotoService();
 
   final String _rootUrl = "https://soccercracks-backend.web.app/api/foto";
 
@@ -27,7 +27,8 @@ class FotosService {
   }
 
   Future<String> uploadImage(File image) async {
-    final cloudinary = CloudinaryPublic('dyvxsq2cr', 'ml_default', cache: false);
+    final cloudinary =
+        CloudinaryPublic('dyvxsq2cr', 'ml_default', cache: false);
     try {
       CloudinaryResponse response = await cloudinary.uploadFile(
         CloudinaryFile.fromFile(image.path,

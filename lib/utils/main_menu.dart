@@ -22,5 +22,7 @@ List<Widget> contentWidgets = [
   const InicioWidget(),
   const PartidosWidget(),
   const NoticiasWidget(),
-  const PerfilWidget()
+  const PerfilWidget(
+    id: '',
+  )
 ];
