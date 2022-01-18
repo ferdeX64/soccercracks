@@ -94,8 +94,10 @@ import 'dart:convert';
 
 Notice noticeFromJson(String str) => Notice.fromJson(json.decode(str));
 
+String noticeToJson(Notice data) => json.encode(data.toJson());
 class Notice {
   Notice({
+    this.idnoticia,
     this.autor,
     this.descripcion,
     this.fecha,
@@ -103,7 +105,7 @@ class Notice {
     this.seccion,
     this.titulo,
   });
-
+  String? idnoticia;
   String? autor;
   String? descripcion;
   String? fecha;
@@ -112,6 +114,7 @@ class Notice {
   String? titulo;
 
   factory Notice.fromJson(Map<String, dynamic> json) => Notice(
+        idnoticia: json["idnoticia"], 
         autor: json["autor"],
         descripcion: json["descripcion"],
         fecha: json["fecha"],
@@ -119,4 +122,13 @@ class Notice {
         seccion: json["seccion"],
         titulo: json["titulo"],
       );
+  Map<String, dynamic> toJson() => {
+        "idnoticia":idnoticia,
+        "autor": autor,
+        "descripcion": descripcion,
+        "fecha": fecha,
+        "imagen": List<dynamic>.from(imagen!.map((x) => x)),
+        "seccion": seccion,
+        "titulo": titulo,
+    };
 }
